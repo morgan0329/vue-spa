@@ -22,27 +22,12 @@
     </div>
 
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+
   </div>
 </template>
 
 <script>
-  import { ajax } from 'common'
+  import axios from '@/common/http'
 
   export default {
     name: 'hello',
@@ -53,15 +38,30 @@
     },
     methods: {
       checkPhoneNumber () {
-        this.msg = '你已经按了下一步按钮了。'
+        var _v = this
+        _v.msg = '你已经按了下一步按钮了。'
 
-        ajax.get('https://qmobile.hdfax.com/my/myInfo')
-          .then(data => {
-            if (data.status === '1') {
-              this.myInfoData = data.results
+        var options = {
+          url: '/common/isRegistered',
+          params: {'phoneNumber': this.$el.querySelector('#phoneNumber').value},
+          method: 'get'
+        }
+
+        axios(options)
+          .then(function (response) {
+            console.log(response.status)
+
+            if (response.status === 200) {
+              console.log(response.data)
+
+              if (response.data.isRegistered === 1) {
+                _v.msg = '您输入的帐号已注册，请输入密码'
+              } else {
+                _v.msg = '您输入的帐号未注册，请先注册'
+              }
+            } else {
+              console.log('wrong')
             }
-          }, () => {
-            this.myInfoData = null
           })
       }
     }
