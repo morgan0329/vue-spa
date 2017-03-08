@@ -4,18 +4,21 @@ import VueRouter from 'vue-router'
 import store from '@/store/store'
 
 import Hello from '@/components/Hello'
+import ProductFixedList from '@/pages/ProductFixedList'
+import UserInputPhoneNumber from '@/pages/UserInputPhoneNumber'
+import UserLogin from '@/pages/UserLogin'
+import UserRegister from '@/pages/UserRegister'
+import AssetsMine from '@/pages/AssetsMine'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Hello',
-    component: Hello,
-    meta: {
-      requireAuth: false
-    }
-  }
+  {path: '/', component: Hello, meta: {requireAuth: false}},
+  {path: '/user/inputPhoneNumber', component: UserInputPhoneNumber, meta: {requireAuth: false}},
+  {path: '/user/login', component: UserLogin, meta: {requireAuth: false}},
+  {path: '/user/register', component: UserRegister, meta: {requireAuth: false}},
+  {path: '/assets/mine', component: AssetsMine, meta: {requireAuth: true}},
+  {path: '/product/fixedList', component: ProductFixedList, meta: {requireAuth: false}}
 ]
 
 const router = new VueRouter({
@@ -28,7 +31,7 @@ router.beforeEach((to, from, next) => {
       next()
     } else {
       next({
-        path: '/login',
+        path: '/user/inputPhoneNumber',
         query: {redirect: to.fullPath}
       })
     }

@@ -5,6 +5,6 @@
         恒大金服
       </div>
     </div>
-    <h1>User Login</h1>
+    <h1>My Assets</h1>
   </div>
 </template>
