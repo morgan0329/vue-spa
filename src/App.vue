@@ -9,7 +9,7 @@
                       <span class="weui-tabbar__icon">
                         <i slot="icon" class="ion-home"></i>
                       </span>
-                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
+                        <!--span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span-->
                     </span>
         <p class="weui-tabbar__label">微信</p>
       </a>
@@ -24,7 +24,7 @@
                       <span class="weui-tabbar__icon">
                         <i slot="icon" class="ion-chatboxes"></i>
                       </span>
-                        <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+                        <!--span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span-->
                     </span>
         <p class="weui-tabbar__label">发现</p>
       </a>

@@ -38,7 +38,7 @@ axios.interceptors.response.use(
           // 401 清除token信息并跳转到登录页面
           store.commit(types.LOGOUT)
           router.replace({
-            path: 'login',
+            path: '/user/inputPhoneNumber',
             query: {redirect: router.currentRoute.fullPath}
           })
       }

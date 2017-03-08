@@ -1,8 +1,8 @@
 {
   "name": "vue-spa",
   "version": "1.0.0",
-  "description": "A vue.js project",
-  "author": "liaowenyue <liaowenyue@hdfax.com>",
+  "description": "Demo for mobile website",
+  "author": "morgan liao <morgan.liao@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

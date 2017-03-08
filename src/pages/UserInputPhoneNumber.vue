@@ -34,7 +34,7 @@
     name: 'UserInputPhoneNumber',
     data () {
       return {
-        msg: '请输入手机号'
+        msg: ''
       }
     },
     methods: {
@@ -57,9 +57,14 @@
 
               if (response.data.isRegistered === 1) {
                 _v.msg = '您输入的帐号已注册，请输入密码'
-                router.go('/')
+                router.push({
+                  path: '/user/login'
+                })
               } else {
                 _v.msg = '您输入的帐号未注册，请先注册'
+                router.push({
+                  path: '/user/register'
+                })
               }
             } else {
               console.log('wrong')

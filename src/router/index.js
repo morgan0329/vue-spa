@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 
 import store from '@/store/store'
 
-import Hello from '@/components/Hello'
 import ProductFixedList from '@/pages/ProductFixedList'
 import UserInputPhoneNumber from '@/pages/UserInputPhoneNumber'
 import UserLogin from '@/pages/UserLogin'
@@ -13,7 +12,7 @@ import AssetsMine from '@/pages/AssetsMine'
 Vue.use(VueRouter)
 
 const routes = [
-  {path: '/', component: Hello, meta: {requireAuth: false}},
+  {path: '/', component: UserInputPhoneNumber, meta: {requireAuth: false}},
   {path: '/user/inputPhoneNumber', component: UserInputPhoneNumber, meta: {requireAuth: false}},
   {path: '/user/login', component: UserLogin, meta: {requireAuth: false}},
   {path: '/user/register', component: UserRegister, meta: {requireAuth: false}},
@@ -26,6 +25,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log(to.path)
+  console.log(to.matched.some(r => r.meta.requireAuth))
+  console.log(typeof to === 'string' || typeof to === 'object')
+  console.log(to.replace)
+
   if (to.matched.some(r => r.meta.requireAuth)) {
     if (store.state.token) {
       next()
@@ -36,6 +40,7 @@ router.beforeEach((to, from, next) => {
       })
     }
   } else {
+    console.log(next)
     next()
   }
 })
