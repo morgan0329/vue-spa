@@ -12,7 +12,7 @@
       <input type="hidden" value="" name="byKek" id="loginFormByKek"/>
       <input type="hidden" value="" name="marketChannel" id="marketChannel"/>
       <input type="hidden" value="" name="returnURL" id="returnURL"/>
-      <input type="hidden" value="" name="phoneNumber" id="phoneNumber"/>
+      <!--input type="hidden" value="" name="phoneNumber" id="phoneNumber"/-->
       <input type="hidden" value="" name="promotionCode" id="promotionCode"/>
       <input type="hidden" value="" name="uuid" id="wxInfoUUID"/>
 
@@ -49,3 +49,25 @@
     </div>
   </div>
 </template>
+<script>
+  var _v = null
+
+  export default {
+    name: 'UserLogin',
+    data () {
+      return {
+        phoneNumber: '180'
+      }
+    },
+    created: function () {
+      _v = this
+      console.log('hello' + JSON.stringify(_v.$route.params))
+    },
+    ready: function () {
+    },
+    methods: {}
+  }
+</script>
+</script>
+</script>
+</script>

@@ -8,7 +8,7 @@ import router from '@/router'
 
 // axios 配置
 axios.defaults.timeout = 5000
-axios.defaults.baseURL = 'https://qmobile.hdfax.com/'
+axios.defaults.baseURL = 'http://www.xiaosq.com/'
 
 // http request 拦截器
 axios.interceptors.request.use(

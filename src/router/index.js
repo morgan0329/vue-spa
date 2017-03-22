@@ -25,10 +25,8 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to.path)
-  console.log(to.matched.some(r => r.meta.requireAuth))
-  console.log(typeof to === 'string' || typeof to === 'object')
-  console.log(to.replace)
+  console.log('path=' + to.path)
+  console.log('params=' + JSON.stringify(to.params))
 
   if (to.matched.some(r => r.meta.requireAuth)) {
     if (store.state.token) {
@@ -40,7 +38,6 @@ router.beforeEach((to, from, next) => {
       })
     }
   } else {
-    console.log(next)
     next()
   }
 })

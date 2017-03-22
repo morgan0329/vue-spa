@@ -50,15 +50,15 @@
 
         axios(options)
           .then(function (response) {
-            console.log(response.status)
-
             if (response.status === 200) {
-              console.log(response.data)
-
               if (response.data.isRegistered === 1) {
                 _v.msg = '您输入的帐号已注册，请输入密码'
+
+                console.log('params...' + _v.$el.querySelector('#phoneNumber').value)
+
                 router.push({
-                  path: '/user/login'
+                  path: '/user/login',
+                  query: {phoneNumber: _v.$el.querySelector('#phoneNumber').value}
                 })
               } else {
                 _v.msg = '您输入的帐号未注册，请先注册'
